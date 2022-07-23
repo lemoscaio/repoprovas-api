@@ -1,11 +1,9 @@
 import { PrismaClient } from "@prisma/client"
-import {
-  CreateCategory,
-  CreateDiscipline,
-  CreateTeacher,
-  CreateTeacherDiscipline,
-  CreateTerm,
-} from "../src/interfaces/createData"
+import { CreateCategory } from "src/interfaces/categoryInterfaces"
+import { CreateDiscipline } from "src/interfaces/disciplineInterfaces"
+import { CreateTeacher } from "src/interfaces/teacherInterfaces"
+import { CreateTeacherDiscipline } from "src/interfaces/teacherOnDisciplineInterface"
+import { CreateTerm } from "src/interfaces/termInterfaces"
 
 const prisma = new PrismaClient()
 

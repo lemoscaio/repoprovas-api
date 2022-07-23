@@ -204,7 +204,4 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
   extensionsToTreatAsEsm: [".ts"],
-  moduleNameMapper: {
-    "^(\\.{1,2}/.*)\\.js$": "$1",
-  },
 }
