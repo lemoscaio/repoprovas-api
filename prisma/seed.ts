@@ -2,8 +2,9 @@ import { PrismaClient } from "@prisma/client"
 import { CreateCategory } from "src/interfaces/categoryInterfaces"
 import { CreateDiscipline } from "src/interfaces/disciplineInterfaces"
 import { CreateTeacher } from "src/interfaces/teacherInterfaces"
-import { CreateTeacherDiscipline } from "src/interfaces/teacherOnDisciplineInterface"
 import { CreateTerm } from "src/interfaces/termInterfaces"
+
+type CreateSeedTeacher = CreateTeacher & { disciplines: CreateDiscipline[] }
 
 const prisma = new PrismaClient()
 
@@ -40,8 +41,12 @@ async function main() {
     },
   ]
   const teachers: CreateTeacher[] = [
-    { name: "Diego Pinho" },
-    { name: "Bruna Hamori" },
+    {
+      name: "Diego Pinho",
+    },
+    {
+      name: "Bruna Hamori",
+    },
   ]
   const disciplines: CreateDiscipline[] = [
     {
@@ -69,30 +74,30 @@ async function main() {
       termId: 3,
     },
   ]
-  const teachersDisciplines: CreateTeacherDiscipline[] = [
+  const teachersDisciplines = [
     {
-      teacherId: 1,
-      disciplineId: 1,
+      teacherName: "Diego Pinho",
+      disciplineName: "HTML e CSS",
     },
     {
-      teacherId: 1,
-      disciplineId: 2,
+      teacherName: "Diego Pinho",
+      disciplineName: "JavaScript",
     },
     {
-      teacherId: 1,
-      disciplineId: 3,
+      teacherName: "Diego Pinho",
+      disciplineName: "React",
     },
     {
-      teacherId: 2,
-      disciplineId: 4,
+      teacherName: "Bruna Hamori",
+      disciplineName: "Humildade",
     },
     {
-      teacherId: 2,
-      disciplineId: 5,
+      teacherName: "Bruna Hamori",
+      disciplineName: "Planejamento",
     },
     {
-      teacherId: 2,
-      disciplineId: 6,
+      teacherName: "Bruna Hamori",
+      disciplineName: "Autoconfiança",
     },
   ]
 
@@ -100,7 +105,17 @@ async function main() {
   await prisma.category.createMany({ data: categories })
   await prisma.teacher.createMany({ data: teachers })
   await prisma.discipline.createMany({ data: disciplines })
-  await prisma.teacherDiscipline.createMany({ data: teachersDisciplines })
+
+  Promise.all(
+    teachersDisciplines.map((teacherDiscipline) => {
+      return prisma.teacher.update({
+        where: { name: teacherDiscipline.teacherName },
+        data: {
+          disciplines: { connect: { name: teacherDiscipline.disciplineName } },
+        },
+      })
+    }),
+  )
 }
 
 main()
