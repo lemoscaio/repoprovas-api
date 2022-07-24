@@ -1,3 +1,4 @@
+import { CreateTestData } from "@/interfaces/testInterfaces"
 import { PrismaClient } from "@prisma/client"
 import { CreateCategory } from "src/interfaces/categoryInterfaces"
 import { CreateDiscipline } from "src/interfaces/disciplineInterfaces"
@@ -100,6 +101,78 @@ async function main() {
       disciplineName: "Autoconfiança",
     },
   ]
+  const tests: CreateTestData[] = [
+    {
+      name: "Teste 1",
+      pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+      categoryId: 1,
+      disciplineId: 1,
+      teacherId: 1,
+    },
+    {
+      name: "Teste 2",
+      pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+      categoryId: 1,
+      disciplineId: 4,
+      teacherId: 2,
+    },
+    {
+      name: "Teste 3",
+      pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+      categoryId: 1,
+      disciplineId: 2,
+      teacherId: 1,
+    },
+    {
+      name: "Teste 4",
+      pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+      categoryId: 1,
+      disciplineId: 5,
+      teacherId: 2,
+    },
+    {
+      name: "Teste 5",
+      pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+      categoryId: 1,
+      disciplineId: 3,
+      teacherId: 1,
+    },
+    {
+      name: "Teste 6",
+      pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+      categoryId: 1,
+      disciplineId: 6,
+      teacherId: 2,
+    },
+    {
+      name: "Teste 7",
+      pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+      categoryId: 2,
+      disciplineId: 1,
+      teacherId: 1,
+    },
+    {
+      name: "Teste 8",
+      pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+      categoryId: 2,
+      disciplineId: 4,
+      teacherId: 2,
+    },
+    {
+      name: "Teste 9",
+      pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+      categoryId: 2,
+      disciplineId: 2,
+      teacherId: 1,
+    },
+    {
+      name: "Teste 10",
+      pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+      categoryId: 2,
+      disciplineId: 5,
+      teacherId: 2,
+    },
+  ]
 
   await prisma.term.createMany({ data: terms })
   await prisma.category.createMany({ data: categories })
@@ -116,6 +189,8 @@ async function main() {
       })
     }),
   )
+
+  await prisma.test.createMany({ data: tests })
 }
 
 main()

@@ -1,7 +1,7 @@
 import { CreateTestData } from "@/interfaces/testInterfaces"
 import { queryFactory } from "@factories/queryFactory"
 import { testRepository } from "@repositories/testRepository"
-import { notFoundError } from "@utils/errorUtils"
+import { notFoundError, wrongSchemaError } from "@utils/errorUtils"
 
 export const testService = {
   async insertTest(data: CreateTestData) {
@@ -22,5 +22,20 @@ export const testService = {
     const insertedTest = await testRepository.insertTest(data)
 
     return insertedTest
+  },
+  async findAllTestsByTag(groupBy: string) {
+    const groupByOptions = {
+      disciplines: testRepository.findAllTestsByTermAndDiscipline(),
+      // teachers: testRepository.findAllTestsByTermAndTeachers()
+    }
+
+    if (!groupByOptions[groupBy])
+      throw wrongSchemaError(
+        `You must pass a valid query string. ${groupBy} is not a valid query`,
+      )
+
+    const tests = await groupByOptions[groupBy]
+
+    return tests
   },
 }

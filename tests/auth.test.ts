@@ -15,19 +15,10 @@ describe("Auth test suite", () => {
     expect(user.status).toBe(201)
   })
 
+  // TODO conflict
+
   it("given a bad user data (empty password), it should return 422", async () => {
     const userBadData = { ...userData, password: "" }
-    const user = await agent.post("/sign-up").send(userBadData)
-
-    expect(user.status).toBe(422)
-  })
-
-  it("given a bad user data (not matching passwords), it should return 422", async () => {
-    const userBadData = {
-      ...userData,
-      password: "0123456789",
-      confirmPassword: "9876543210",
-    }
     const user = await agent.post("/sign-up").send(userBadData)
 
     expect(user.status).toBe(422)
@@ -38,6 +29,8 @@ describe("Auth test suite", () => {
 
     expect(user.status).toBe(200)
   })
+
+  // TODO wrong schema
 
   it("given a wrong password, it should return 401", async () => {
     const userWithWrongPass = { ...loginData, password: "wrongPassword" }
