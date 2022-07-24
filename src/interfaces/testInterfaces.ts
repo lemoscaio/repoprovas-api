@@ -1,3 +1,3 @@
 import { Test } from "@prisma/client"
 
-export type CreateTest = Omit<Test, "id">
+export type CreateTestData = Omit<Test, "id">

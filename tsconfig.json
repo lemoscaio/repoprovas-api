@@ -7,9 +7,11 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
+      "@/*": ["./src/*"],
       "@config/*": ["./src/config/*"],
-      "@middlewares/*": ["./src/middlewares/*"],
       "@controllers/*": ["./src/controllers/*"],
+      "@factories/*": ["./src/factories/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
       "@repositories/*": ["./src/repositories/*"],
       "@routers/*": ["./src/routers/*"],
       "@schemas/*": ["./src/schemas/*"],

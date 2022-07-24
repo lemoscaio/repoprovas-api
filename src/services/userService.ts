@@ -4,11 +4,15 @@ import jwt from "jsonwebtoken"
 import * as userRepository from "@repositories/userRepository"
 import { encrypt } from "@utils/encryptFunctions"
 import { CreateUserData } from "src/interfaces/userInterfaces"
+import {
+  conflictError,
+  notFoundError,
+  unauthorizedError,
+} from "@utils/errorUtils"
 
 export async function registerUser({ email, password }: CreateUserData) {
   const userExists = await userRepository.findByEmail(email)
-  if (userExists)
-    throw { status: 409, message: "This e-mail is already registered!" }
+  if (userExists) throw conflictError("This e-mail is already registered!")
 
   const hashPassword = encrypt.bcrypt.encryptPassword(password)
   await userRepository.register({
@@ -28,7 +32,7 @@ export async function loginUser({ email, password }: CreateUserData) {
   )
 
   if (!foundUser || !passwordMatch)
-    throw { status: 401, message: "Wrong e-mail or password" }
+    throw unauthorizedError("Wrong e-mail or password")
 
   const token = jwt.sign({ email: foundUser.email }, JWT_TOKEN)
 
@@ -38,7 +42,7 @@ export async function loginUser({ email, password }: CreateUserData) {
 export async function findByEmail(email: string) {
   const foundUser = await userRepository.findByEmail(email)
 
-  if (!foundUser) throw { status: 404, message: "User not found" }
+  if (!foundUser) throw notFoundError("User not found")
 
   return foundUser
 }
