@@ -8,7 +8,6 @@ export const userFactory = {
     return {
       email: email,
       password,
-      confirmPassword: password,
     }
   },
 
