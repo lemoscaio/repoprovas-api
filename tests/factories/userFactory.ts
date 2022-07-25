@@ -1,6 +1,8 @@
+import app from "@/app"
 import { prisma } from "@config/database"
 import { faker } from "@faker-js/faker"
 import { encrypt } from "@utils/encryptFunctions"
+import supertest from "supertest"
 
 export const userFactory = {
   createUserData(email = "test@email.com", passwordLength = 10) {
@@ -19,5 +21,19 @@ export const userFactory = {
     })
 
     return createdUser
+  },
+
+  async getToken() {
+    const userData = this.createUserData("newToken@test.com")
+    await this.createUser(userData)
+
+    const response = await supertest(app).post("/sign-in").send(userData)
+    const token = response.body.token
+    console.log(
+      `🚀 -> file: userFactory.ts -> line 32 -> getToken -> token`,
+      token,
+    )
+
+    return token
   },
 }

@@ -19,8 +19,25 @@ export const testRepository = {
                 category: true,
                 teacher: true,
               },
+              orderBy: [{ categoryId: "asc" }],
             },
           },
+        },
+      },
+    })
+  },
+  findAllTestsByTermAndTeachers() {
+    return prisma.teacher.findMany({
+      include: {
+        tests: {
+          select: {
+            id: true,
+            name: true,
+            pdfUrl: true,
+            category: true,
+            discipline: true,
+          },
+          orderBy: [{ categoryId: "asc" }, { disciplineId: "asc" }],
         },
       },
     })

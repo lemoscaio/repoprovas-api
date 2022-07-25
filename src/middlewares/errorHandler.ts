@@ -14,8 +14,6 @@ export function handleError(
     res.status(statusCode).send(error.message)
   }
 
-  if (error.status && error.message)
-    return res.status(error.status).send(error.message)
   if (error.details)
     return res.status(422).send(error.details.map(({ message }) => message))
 

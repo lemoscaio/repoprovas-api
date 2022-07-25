@@ -26,9 +26,10 @@ export const testService = {
   async findAllTestsByTag(groupBy: string) {
     const groupByOptions = {
       disciplines: testRepository.findAllTestsByTermAndDiscipline(),
-      // teachers: testRepository.findAllTestsByTermAndTeachers()
+      teachers: testRepository.findAllTestsByTermAndTeachers(),
     }
 
+    if (!groupBy) throw wrongSchemaError(`You must pass a valid query string.`)
     if (!groupByOptions[groupBy])
       throw wrongSchemaError(
         `You must pass a valid query string. ${groupBy} is not a valid query`,
