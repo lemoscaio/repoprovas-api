@@ -5,9 +5,11 @@ import * as userService from "@services/userService"
 export async function registerUser(req: Request, res: Response) {
   const { email, password }: { email: string; password: string } = req.body
 
-  await userService.registerUser({ email, password })
+  const createdUser = await userService.registerUser({ email, password })
 
-  res.status(201).send(req.body)
+  createdUser.password = password
+
+  res.status(201).send(createdUser)
 }
 
 export async function loginUser(req: Request, res: Response) {

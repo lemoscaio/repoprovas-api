@@ -15,10 +15,12 @@ export async function registerUser({ email, password }: CreateUserData) {
   if (userExists) throw conflictError("This e-mail is already registered!")
 
   const hashPassword = encrypt.bcrypt.encryptPassword(password)
-  await userRepository.register({
+  const createdUser = await userRepository.register({
     email,
     password: hashPassword,
   })
+
+  return createdUser
 }
 
 export async function loginUser({ email, password }: CreateUserData) {

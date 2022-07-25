@@ -23,16 +23,12 @@ export const userFactory = {
     return createdUser
   },
 
-  async getToken() {
-    const userData = this.createUserData("newToken@test.com")
+  async getToken(email = "newToken@test.com") {
+    const userData = this.createUserData(email)
     await this.createUser(userData)
 
     const response = await supertest(app).post("/sign-in").send(userData)
     const token = response.body.token
-    console.log(
-      `🚀 -> file: userFactory.ts -> line 32 -> getToken -> token`,
-      token,
-    )
 
     return token
   },

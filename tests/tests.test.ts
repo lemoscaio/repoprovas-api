@@ -9,7 +9,7 @@ let token: string
 let authorization: string
 
 beforeAll(async () => {
-  token = await userFactory.getToken()
+  token = await userFactory.getToken("tests@tests.com")
   authorization = `Bearer ${token}`
 })
 
@@ -72,7 +72,43 @@ describe("Test creation test suit", () => {
     expect(result.body).toHaveProperty("id")
   })
 
-  it("given a wrong data, it should return 422", async () => {
+  it("given a wrong data (empty name), it should return 422", async () => {
+    const result = await agent
+      .post("/tests")
+      .set("Authorization", authorization)
+      .send({ ...testData, name: "" })
+
+    expect(result.statusCode).toBe(422)
+  })
+
+  it("given a wrong data (categoryId as string), it should return 422", async () => {
+    const result = await agent
+      .post("/tests")
+      .set("Authorization", authorization)
+      .send({ ...testData, categoryId: "thisIsAString" })
+
+    expect(result.statusCode).toBe(422)
+  })
+
+  it("given a wrong data (disciplineId as string), it should return 422", async () => {
+    const result = await agent
+      .post("/tests")
+      .set("Authorization", authorization)
+      .send({ ...testData, disciplineId: "thisIsAString" })
+
+    expect(result.statusCode).toBe(422)
+  })
+
+  it("given a wrong data (teacherId as string), it should return 422", async () => {
+    const result = await agent
+      .post("/tests")
+      .set("Authorization", authorization)
+      .send({ ...testData, teacherId: "thisIsAString" })
+
+    expect(result.statusCode).toBe(422)
+  })
+
+  it("given a wrong data (wrong URL), it should return 422", async () => {
     const result = await agent
       .post("/tests")
       .set("Authorization", authorization)
@@ -132,7 +168,7 @@ describe("Find tests test suit", () => {
     expect(result.body[0]).not.toBeFalsy
   })
 
-  it("given an empty query string in the route, it should return 422", async () => {
+  it("not given a query string in the route, it should return 422", async () => {
     const result = await agent
       .get("/tests")
       .set("Authorization", authorization)
