@@ -1,0 +1,23 @@
+_id: req_b51ccbbc4efa4921bad95ab245ec846f
+type: Request
+parentId: wrk_3721a2ce449744b580186057f4f2903e
+modified: 1658729034871
+created: 1658717894008
+url: "{{ _.url }}/categories"
+name: Get Categories
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+  token: "{{ _.token }}"
+metaSortKey: -1658566662795
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

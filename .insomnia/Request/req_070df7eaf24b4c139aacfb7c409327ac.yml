@@ -1,0 +1,30 @@
+_id: req_070df7eaf24b4c139aacfb7c409327ac
+type: Request
+parentId: wrk_3721a2ce449744b580186057f4f2903e
+modified: 1658729026884
+created: 1658717601666
+url: "{{ _.url }}/sign-up"
+name: Sign up
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: >-
+    {
+    	"email": "{% faker 'internet', '', '', '', '', '', '', '', '', '', '', '', '', '', 'email', '', '', '', '', '', '', '', '', '', '', '', 'en' %}",
+    	"password": "1234567890"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f2ca723ec80e4334836f99cfed0370ec
+authentication: {}
+metaSortKey: -1658717601666
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

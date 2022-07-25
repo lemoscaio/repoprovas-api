@@ -1,0 +1,23 @@
+_id: req_14f65a8e61c5497989da533d53959113
+type: Request
+parentId: wrk_3721a2ce449744b580186057f4f2903e
+modified: 1658729650975
+created: 1658645948561
+url: "{{ _.url }}/tests?groupBy=disciplines"
+name: Get tests by discipline
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+  token: "{{ _.token }}"
+metaSortKey: -1658645948561
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

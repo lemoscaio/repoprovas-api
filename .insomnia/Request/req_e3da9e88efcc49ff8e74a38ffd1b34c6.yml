@@ -1,0 +1,35 @@
+_id: req_e3da9e88efcc49ff8e74a38ffd1b34c6
+type: Request
+parentId: wrk_3721a2ce449744b580186057f4f2903e
+modified: 1658729656851
+created: 1658566662845
+url: "{{ _.url }}/tests"
+name: Create test
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: >-
+    {
+    	"name": "{% faker 'word', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'noun', '', 'pt_BR' %}",
+    	"pdfUrl": "http://www.africau.edu/images/default/sample.pdf",
+    	"categoryId": 1,
+    	"disciplineId": 1,
+    	"teacherId": 1
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_3497393691e0471eb2e227380eaf894a
+authentication:
+  type: bearer
+  token: "{{ _.token }}"
+metaSortKey: -1658586484249
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

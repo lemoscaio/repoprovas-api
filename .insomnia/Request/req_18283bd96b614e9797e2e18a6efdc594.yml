@@ -1,0 +1,23 @@
+_id: req_18283bd96b614e9797e2e18a6efdc594
+type: Request
+parentId: wrk_3721a2ce449744b580186057f4f2903e
+modified: 1658729648368
+created: 1658698186764
+url: "{{ _.url }}/tests?wrongQuery=disciplines"
+name: Get tests (wrong query string)
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+  token: "{{ _.token }}"
+metaSortKey: -1658626127132
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

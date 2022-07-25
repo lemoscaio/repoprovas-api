@@ -1,0 +1,30 @@
+_id: req_99fc292011f24671ba5d7ff5c83cde3d
+type: Request
+parentId: wrk_3721a2ce449744b580186057f4f2903e
+modified: 1658729028839
+created: 1658717742065
+url: "{{ _.url }}/sign-in"
+name: Sign in
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: >-
+    {
+    	"email": "{% response 'body', 'req_070df7eaf24b4c139aacfb7c409327ac', 'b64::JC5lbWFpbA==::46b', 'never', 60 %}",
+    	"password": "1234567890"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f2ca723ec80e4334836f99cfed0370ec
+authentication: {}
+metaSortKey: -1658681775113.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

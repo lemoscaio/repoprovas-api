@@ -1,0 +1,23 @@
+_id: req_365b26dbc1424e13a480027b6cea5e77
+type: Request
+parentId: wrk_3721a2ce449744b580186057f4f2903e
+modified: 1658729646725
+created: 1658697371799
+url: "{{ _.url }}/tests"
+name: Get tests discipline (empty query)
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+  token: "{{ _.token }}"
+metaSortKey: -1658606305703
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

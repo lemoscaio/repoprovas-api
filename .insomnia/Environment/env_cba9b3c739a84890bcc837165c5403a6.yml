@@ -1,0 +1,17 @@
+_id: env_cba9b3c739a84890bcc837165c5403a6
+type: Environment
+parentId: env_550f1ec25a348ea7a25640a881a5f76cae3214dd
+modified: 1658728280023
+created: 1658566789254
+name: localhost
+data:
+  url: localhost:5000
+  token: "{% response 'body', 'req_99fc292011f24671ba5d7ff5c83cde3d',
+    'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+dataPropertyOrder:
+  "&":
+    - url
+    - token
+color: "#00ff4c"
+isPrivate: false
+metaSortKey: 1658566789254

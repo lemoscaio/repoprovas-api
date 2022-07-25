@@ -1,0 +1,17 @@
+_id: env_81f56e0595b1424183bdf26d413214ab
+type: Environment
+parentId: env_550f1ec25a348ea7a25640a881a5f76cae3214dd
+modified: 1658728528073
+created: 1658728283647
+name: heroku
+data:
+  url: https://repo-prova.herokuapp.com
+  token: "{% response 'body', 'req_99fc292011f24671ba5d7ff5c83cde3d',
+    'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+dataPropertyOrder:
+  "&":
+    - url
+    - token
+color: "#00ff4c"
+isPrivate: false
+metaSortKey: 1658566789304

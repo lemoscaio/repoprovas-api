@@ -1,0 +1,23 @@
+_id: req_b1583c4a1c5b4d338c1338b5d402dbd3
+type: Request
+parentId: wrk_3721a2ce449744b580186057f4f2903e
+modified: 1658729651788
+created: 1658699982056
+url: "{{ _.url }}/tests?groupBy=teachers"
+name: Get tests by teachers
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+  token: "{{ _.token }}"
+metaSortKey: -1658636037846.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
