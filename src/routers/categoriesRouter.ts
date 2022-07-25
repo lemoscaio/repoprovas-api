@@ -1,6 +1,8 @@
+import { findAllCategories } from "@/controllers/categoriesController"
+import { validateToken } from "@/middlewares/validateToken"
 import { Router } from "express"
 
 export const categoriesRouter = Router()
 
-// testsRouter.use(validateToken)
-// categoriesRouter.get("/", findAllCategories)
+categoriesRouter.use(validateToken)
+categoriesRouter.get("/", findAllCategories)
