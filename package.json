@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./ -o ./dist",
     "dev": "ts-node-dev -r tsconfig-paths/register --clear --respawn --transpile-only --ignore-watch node_modules src/server.ts",
-    "start": "node dist/server.js",
+    "start": "node dist/src/server.js",
     "test": "dotenv -e .env.test prisma migrate reset && cross-env dotenv -e .env.test jest -- --coverage -e -i"
   },
   "keywords": [],
